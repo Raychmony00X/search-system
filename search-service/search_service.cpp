@@ -2,13 +2,13 @@
 
 SearchService::SearchService() {
 	std::vector<std::string> words;
+	std::string line;
+	std::cout << "Input 1-4 words:" << std::endl;
+	std::getline(std::cin, line);
+
+	std::istringstream iss(line);
 	std::string word;
-	std::cout << "Input 1-4 words or break to stop:" << std::endl;
-	while (true) {
-		std::cin >> word;
-		if (words.size() == 4 || word == "break") break;
-		words.emplace_back(std::move(word));
-	}
+	while (iss >> word && words.size() < 4) words.emplace_back(word);
 
 	try {
 		pqxx::connection conn(m_connection);

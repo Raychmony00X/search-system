@@ -1,0 +1,21 @@
+# Visual Studio
+.vs/
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.slnx
+*.sln
+
+# Build artifacts
+out/
+x64/
+build/
+*.exe
+*.pdb
+*.ilk
+*.obj
+*.lib
+*.dll
+
+# CMake
+CMakeSettings.json

@@ -14,4 +14,5 @@ public:
 
 protected:
 	std::string m_connection;
+	std::string m_path = "file.ini";
 };

@@ -118,7 +118,8 @@ void Indexer::HandFile(std::ifstream& file, const std::string& document) {
 	}
 
 	std::string str;
-	file >> str;
+	std::string line;
+	while (std::getline(file, line)) str += line + " ";
 	file.close();
 
 	if (str.size() == 0) return;
@@ -137,7 +138,7 @@ void Indexer::HandFile(std::ifstream& file, const std::string& document) {
 }
 
 void Indexer::HandCatalog() {
-	INIReader reader("file.ini");
+	INIReader reader(m_path);
 	std::string path = reader.Get("files", "dir", "unknown");
 	std::string extensions = reader.Get("files", "extensions", "unknown");
 
@@ -157,6 +158,7 @@ void Indexer::HandCatalog() {
 			}
 
 		}
+
 	}
 
 	int cores = std::thread::hardware_concurrency();
@@ -175,7 +177,7 @@ void Indexer::HandCatalog() {
 
 				std::filesystem::path path = vec_files[current_index];
 				std::ifstream file(path);
-				HandFile(file, path.filename().string());
+				HandFile(file, path.string());
 			}
 
 			});

@@ -1,7 +1,7 @@
 #include "search_system.h"
 
 SearchSystem::SearchSystem() {
-	INIReader reader("D:\\C++\\search_system\\file.ini");
+	INIReader reader(m_path);
 
 	try {
 		if (reader.ParseError() < 0) {

@@ -9,6 +9,9 @@
 #include <vector>
 #include <mutex>
 #include <filesystem>
+#include <unordered_map>
+#include <thread>
+#include <sstream>
 
 class Indexer : public SearchSystem {
 public:
